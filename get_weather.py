@@ -12,7 +12,7 @@ def get_response(url, parameters):
     return r
 
 def get_current_weather_by_location(location):
-    PAYLOAD = {'q':location.title()+',us', 'appid' : APP_ID, 'units':'imperial'}
+    PAYLOAD = {'q':location.lower()+',us', 'appid' : APP_ID, 'units':'imperial'}
     r = get_response(BASE_URL, PAYLOAD)
     if r.status_code == 200:
         data = json.loads(r.content.decode('utf-8'))
