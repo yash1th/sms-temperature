@@ -8,7 +8,7 @@ app = Flask(__name__)
 def home_page():
     return 'Welcome to text me weather'
 
-@app.route("/sms", methods=['GET', 'POST'])
+@app.route("/sms", methods=['POST'])
 def sms_reply():
 
     location = request.form.get('Body')
