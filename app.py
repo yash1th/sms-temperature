@@ -19,7 +19,7 @@ def sms_reply():
     # Add a message
     resp.message('The temperature in {location} is {temp} F'.format(location=location, temp=current_temp))
 
-    return str(resp)
+    return "Hi you've reached the sms weather app"
 
 if __name__ == "__main__":
     app.run(debug=True)
