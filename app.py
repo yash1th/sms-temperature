@@ -4,11 +4,15 @@ from get_weather import get_current_weather_by_location
 
 app = Flask(__name__)
 
+@app.route('/')
+def home_page():
+    return 'Welcome to text me weather'
+
 @app.route("/sms", methods=['GET', 'POST'])
 def sms_reply():
     """Respond to incoming calls with a simple text message."""
     location = request.form.get('Body')
-    temp, temp_max, temp_min = get_current_weather_by_location(a)
+    temp, temp_max, temp_min = get_current_weather_by_location(location)
     # Start our TwiML response
     resp = MessagingResponse()
     print(resp)
