@@ -6,3 +6,5 @@ pyvenv.cfg
 pip-selfcheck.json
 json_data_weather
 __pycache__/
+.DS_Store
+**/DS_Store
