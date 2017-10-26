@@ -15,12 +15,10 @@ def sms_reply():
     print('location type =',type(location))
     print('location = ',location)
     current_temp = get_current_weather_by_location(location)
-    print(type(current_temp))
     # Start our TwiML response
     resp = MessagingResponse()
-    print(resp)
     # Add a message
-    #resp.message('The temperature in {location} is {temp} F'.format(location=location, temp=current_temp))
+    resp.message('The temperature in {location} is {temp} F'.format(location=location, temp=current_temp))
 
     return "Hi you've reached the sms weather app"
 
