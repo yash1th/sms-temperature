@@ -1,18 +1,19 @@
 from flask import Flask, request, redirect
 from twilio.twiml.messaging_response import MessagingResponse
+from get_weather import get_current_weather_by_location
 
 app = Flask(__name__)
 
 @app.route("/sms", methods=['GET', 'POST'])
 def sms_reply():
     """Respond to incoming calls with a simple text message."""
-    a = request.form.get('Body')
-    print(a)
+    location = request.form.get('Body')
+    temp, temp_max, temp_min = get_current_weather_by_location(a)
     # Start our TwiML response
     resp = MessagingResponse()
     print(resp)
     # Add a message
-    resp.message("The Robots are coming! Head for the hills!")
+    resp.message('The temperature in {location} is {temp} F'.format(location=location, temp=temp))
 
     return str(resp)
 
