@@ -12,12 +12,12 @@ def home_page():
 def sms_reply():
     """Respond to incoming calls with a simple text message."""
     location = request.form.get('Body')
-    temp, temp_max, temp_min = get_current_weather_by_location(location)
+    current_temp = get_current_weather_by_location(location)
     # Start our TwiML response
     resp = MessagingResponse()
     print(resp)
     # Add a message
-    resp.message('The temperature in {location} is {temp} F'.format(location=location, temp=temp))
+    resp.message('The temperature in {location} is {temp} F'.format(location=location, temp=current_temp))
 
     return str(resp)
 

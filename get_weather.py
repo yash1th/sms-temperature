@@ -16,7 +16,7 @@ def get_current_weather_by_location(location):
     r = get_response(BASE_URL, PAYLOAD)
     if r == 200:
         data = json.loads(r.content.decode('utf-8'))
-        return data['temp'], data['temp_max'], data['temp_min']
+        return data['main']['temp']
 
 if __name__ == '__main__':
     get_current_weather_by_location(sys.argv[1])
