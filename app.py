@@ -14,7 +14,8 @@ def sms_reply():
     location = request.form.get('Body')
     print('location type =',type(location))
     print('location = ',location)
-    #current_temp = get_current_weather_by_location(location)
+    current_temp = get_current_weather_by_location(location)
+    print(type(current_temp))
     # Start our TwiML response
     resp = MessagingResponse()
     print(resp)
