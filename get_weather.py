@@ -15,11 +15,12 @@ def get_response(url, parameters):
 
 def get_units(message):
     if any(_ in message.lower().split(' ') for _ in metrics):
-        return 'metrics'
+        return 'metric'
     else:
         return 'imperial'
 
 def get_current_weather_by_location(incoming_message):
+    #units = get_units(incoming_message.strip().lower())
     PAYLOAD = {'q': incoming_message.lower()+',us', 'appid' : APP_ID, 'units':'imperial'}
     r = get_response(BASE_URL, PAYLOAD)
     if r.status_code == 200:
