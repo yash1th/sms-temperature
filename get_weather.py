@@ -20,7 +20,7 @@ def get_units(message):
         return 'imperial'
 
 def get_current_weather_by_location(incoming_message):
-    PAYLOAD = {'q': incoming_message.lower()+',us', 'appid' : APP_ID, 'units':'imperials'}
+    PAYLOAD = {'q': incoming_message.lower()+',us', 'appid' : APP_ID, 'units':'imperial'}
     r = get_response(BASE_URL, PAYLOAD)
     if r.status_code == 200:
         data = json.loads(r.content.decode('utf-8'))
