@@ -10,7 +10,7 @@ def home_page():
 
 @app.route("/sms", methods=['POST'])
 def sms_reply():
-    #location = request.form.get('Body')
+    location = request.form.get('Body')
     twi_form = request.form.to_dict()
     print(twi_form)
     current_temp, max_temp, min_temp = get_current_weather_by_location(location)
