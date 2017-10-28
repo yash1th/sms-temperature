@@ -3,11 +3,14 @@ import json
 import configparser
 import sys
 
-config = configparser.ConfigParser()
-config.read('settings.ini')
-BASE_URL = config['openweathermap']['BASE_URL']
-APP_ID = config['openweathermap']['APP_ID']
-metrics = config['units']['metrics'].split(',')
+#when running locally
+# config = configparser.ConfigParser()
+# config.read('settings.ini')
+#BASE_URL = config['openweathermap']['BASE_URL']
+#APP_ID = config['openweathermap']['APP_ID']
+
+BASE_URL = ENV['BASE_WEATHER_URL']
+APP_ID = ENV['OPENWEATHER_APP_ID']
 
 def get_response(url, parameters):
     r = requests.get(url, params = parameters)
@@ -35,7 +38,7 @@ def get_message_string(data):
 
 def get_current_weather_by_location(message):
     PAYLOAD = {'q': message.title(), 'type':'accurate','appid' : APP_ID, 'units':'imperial'}
-    r = get_response(BASE_URL, PAYLOAD)
+    r = get_response(BASE_WEATHER_URL, PAYLOAD)
     if r.status_code == 200:
         data = json.loads(r.content.decode('utf-8'))
         return get_message_string(data)
