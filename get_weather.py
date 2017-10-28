@@ -13,26 +13,15 @@ def get_response(url, parameters):
     r = requests.get(url, params = parameters)
     return r
 
-def get_units(message):
-    if any(_ in message.lower().split(' ') for _ in metrics):
-        return 'metric'
-    else:
-        return 'imperial'
-
-
-def to_celcius(temperature):
-    pass
-
-
 def get_temperature_summary(temperature_details):
     current_temperature = 'current : '+str(temperature_details['temp'])
-    max_temperature = 'high : '+str(temperature_details['temp_max'])
-    min_temperature = 'low : '+str(temperature_details['temp_min'])
-    if max_temperature == min_temperature:
+    maximum_temperature = 'high : '+str(temperature_details['temp_max'])
+    minimum_temperature = 'low : '+str(temperature_details['temp_min'])
+    if maximum_temperature == minimum_temperature:
         temperature_summary = current_temperature
     else:
-        temperature_summary = ' \xb0F\n'.join([current_temperature, max_temperature, min_temperature])
-    return temperature_summary
+        temperature_summary = ' \xb0F\n'.join([current_temperature, maximum_temperature, minimum_temperature])
+    return temperature_summary+' \xb0F'
     
 
 def get_message_string(data):
@@ -54,4 +43,4 @@ def get_current_weather_by_location(message):
         return 'Sorry the current location is unavailable'
 
 if __name__ == '__main__':
-    get_current_weather_by_location('charlotte')
+    print(get_current_weather_by_location('charlotte'))
