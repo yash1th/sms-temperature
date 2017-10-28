@@ -17,7 +17,7 @@ def get_temperature_summary(temperature_details):
     current_temperature = 'current : '+str(temperature_details['temp'])
     maximum_temperature = 'high : '+str(temperature_details['temp_max'])
     minimum_temperature = 'low : '+str(temperature_details['temp_min'])
-    if maximum_temperature == minimum_temperature:
+    if temperature_details['temp_max'] == temperature_details['temp_min']:
         temperature_summary = current_temperature
     else:
         temperature_summary = ' \xb0F\n'.join([current_temperature, maximum_temperature, minimum_temperature])
@@ -44,3 +44,4 @@ def get_current_weather_by_location(message):
 
 if __name__ == '__main__':
     print(get_current_weather_by_location('charlotte'))
+    print(get_current_weather_by_location('vijayawada'))
