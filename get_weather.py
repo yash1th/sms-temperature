@@ -2,15 +2,20 @@ import requests
 import json
 import configparser
 import sys
+import os
 
-#when running locally
-# config = configparser.ConfigParser()
-# config.read('settings.ini')
-#BASE_URL = config['openweathermap']['BASE_URL']
-#APP_ID = config['openweathermap']['APP_ID']
 
-BASE_URL = ENV['BASE_WEATHER_URL']
-APP_ID = ENV['OPENWEATHER_APP_ID']
+is_prod = os.environ.get('IS_HEROKU',None)
+
+if is_prod:
+    BASE_URL = ENV['BASE_WEATHER_URL']
+    APP_ID = ENV['OPENWEATHER_APP_ID']
+else: #when running locally/dev environmentt
+    config = configparser.ConfigParser()
+    config.read('settings.ini')
+    BASE_URL = config['openweathermap']['BASE_URL']
+    APP_ID = config['openweathermap']['APP_ID']
+
 
 def get_response(url, parameters):
     r = requests.get(url, params = parameters)
