@@ -40,7 +40,7 @@ def get_current_weather_by_location(message):
         data = json.loads(r.content.decode('utf-8'))
         return get_message_string(data)
     else:
-        return 'Sorry the current location is unavailable'
+        return 'Sorry the location you sent is either not valid or unavailable'
 
 if __name__ == '__main__':
     print(get_current_weather_by_location('charlotte'))
