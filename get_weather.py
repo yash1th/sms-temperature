@@ -8,8 +8,8 @@ import os
 is_prod = os.environ.get('IS_HEROKU',None)
 
 if is_prod:
-    BASE_URL = ENV['BASE_WEATHER_URL']
-    APP_ID = ENV['OPENWEATHER_APP_ID']
+    BASE_URL = prod.env.BASE_WEATHER_URL
+    APP_ID = prod.env.APP_ID
 else: #when running locally/dev environmentt
     config = configparser.ConfigParser()
     config.read('settings.ini')
