@@ -14,11 +14,7 @@ def sms_reply():
         return 'You reached the sms page'
     else:
         location = request.form.get('Body')
-        # incoming_message = request.form.to_dict()
-        # print(incoming_message)
-        #current_temp, max_temp, min_temp = get_current_weather_by_location(location)
         resp = MessagingResponse()
-        #resp.message('Temperatures in {location} -\n Current: {temp}F\n Maximum: {max_temp}F\n Minimum: {min_temp}F'.format(location=location, temp=current_temp, max_temp=max_temp, min_temp=min_temp))
         resp.message(get_current_weather_by_location(location))
         return str(resp)
 
