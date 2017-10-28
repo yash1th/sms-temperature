@@ -1,0 +1,1 @@
+A python application to get a temperature by just sending an sms with location name to a phone number. More details to follow
