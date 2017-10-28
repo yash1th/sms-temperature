@@ -37,7 +37,7 @@ def get_message_string(data):
 
 def get_current_weather_by_location(message):
     PAYLOAD = {'q': message.title(), 'type':'accurate','appid' : APP_ID, 'units':'imperial'}
-    r = get_response(BASE_WEATHER_URL, PAYLOAD)
+    r = get_response(BASE_URL, PAYLOAD)
     if r.status_code == 200:
         data = json.loads(r.content.decode('utf-8'))
         return get_message_string(data)
