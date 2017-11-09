@@ -57,12 +57,12 @@ def get_forecast_weather_by_location(message):
         data = json.loads(r.content.decode('utf-8'))['list'][0]
         return get_forecast_string(data)
     else:
-        return 'Sorry the location you sent is either not valid or forecast is not available for that area'
+        return ''
 
 def get_weather_by_location(message):
-    return get_current_weather_by_location(message)+'\n\n'+get_forecast_weather_by_location(message)
+    return '\n\n'.join([get_current_weather_by_location(message), get_forecast_weather_by_location(message)])
 
 
 if __name__ == '__main__':
-    print(get_weather_by_location('san jose'))
-    print(get_weather_by_location('vijayawada'))
+    print(get_weather_by_location('asdjlkahdsjkasd'))
+    #print(get_weather_by_location('vijayawada'))
