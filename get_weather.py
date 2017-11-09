@@ -45,7 +45,7 @@ def get_current_weather_by_location(message):
 
 def get_forecast_string(data):
     s = {}
-    s['header'] = '\n3 hour forecast-'
+    s['header'] = '3 hour forecast-'
     s['temperature'] = get_temperature_summary(data['main'])
     s['description'] = data['weather'][0]['description']
     return '\n'.join([s['header'], s['description'], s['temperature']])
@@ -60,7 +60,7 @@ def get_forecast_weather_by_location(message):
         return 'Sorry the location you sent is either not valid or forecast is not available for that area'
 
 def get_weather_by_location(message):
-    return get_current_weather_by_location(message)+get_forecast_weather_by_location(message)
+    return get_current_weather_by_location(message)+'\n\n'+get_forecast_weather_by_location(message)
 
 
 if __name__ == '__main__':
