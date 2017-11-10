@@ -15,7 +15,7 @@ def sms_reply():
     else:
         location = request.form.get('Body')
         resp = MessagingResponse()
-        resp.message(get_weather_by_location(location.title()))
+        resp.message(get_weather_by_location_2(location.strip().title()))
         return str(resp)
 
 if __name__ == "__main__":
