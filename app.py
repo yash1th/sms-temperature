@@ -1,6 +1,7 @@
 from flask import Flask, request, redirect
 from twilio.twiml.messaging_response import MessagingResponse
 from get_weather import get_weather_by_location
+from get_weather import get_weather_by_location_2
 
 app = Flask(__name__)
 
