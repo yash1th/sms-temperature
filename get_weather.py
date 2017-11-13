@@ -71,7 +71,7 @@ def get_weather_by_location(location):
     get_forecast_weather_by_location(details)
     if details._error:
         return '\n'.join([construct_current_weather_string(details), details._error])
-    return '\n\n'.join([construct_current_weather_string(details), construct_forecast_weather_string(details)])
+    return details, '\n\n'.join([construct_current_weather_string(details), construct_forecast_weather_string(details)])
 
 if __name__ == '__main__':
     print(get_weather_by_location('charlotte'))

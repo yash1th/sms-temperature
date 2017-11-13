@@ -9,7 +9,7 @@ from rq import Queue
 from worker import conn
 
 q = Queue(connection=conn)
-from utils import jilebi
+from utils import insert_into_redis
 
 @app.route('/')
 def home_page():
@@ -22,8 +22,9 @@ def sms_reply():
     else:
         location = request.form.get('Body')
         resp = MessagingResponse()
-        resp.message(get_weather_by_location(location.strip().title()))
-        result = q.enqueue(jilebi, str(resp))
+        details, weather_information = get_weather_by_location(location.strip().title())
+        resp.message(weather_information)
+        q.enqueue(insert_into_redis, details)
         print(result)
         return str(resp)
 
