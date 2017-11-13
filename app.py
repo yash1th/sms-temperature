@@ -24,7 +24,7 @@ def sms_reply():
         resp = MessagingResponse()
         details, weather_information = get_weather_by_location(location.strip().title())
         resp.message(weather_information)
-        q.enqueue(insert_into_redis, details)
+        q.enqueue(insert_into_redis, conn, details)
         return str(resp)
 
 if __name__ == "__main__":
