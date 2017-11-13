@@ -4,6 +4,10 @@ from get_weather import get_weather_by_location
 
 app = Flask(__name__)
 
+import redis
+r = redis.from_url(os.environ.get("REDIS_URL"))
+print('redis url', r)
+
 @app.route('/')
 def home_page():
     return 'Welcome to text me weather'
