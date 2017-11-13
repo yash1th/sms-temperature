@@ -4,10 +4,12 @@ from get_weather import get_weather_by_location
 
 app = Flask(__name__)
 
-import os
-import redis
-r = redis.from_url(os.environ.get("REDIS_URL"))
-print('redis url', r)
+
+from rq import Queue
+from worker import conn
+
+q = Queue(connection=conn)
+from utils import jilebi
 
 @app.route('/')
 def home_page():
@@ -21,6 +23,8 @@ def sms_reply():
         location = request.form.get('Body')
         resp = MessagingResponse()
         resp.message(get_weather_by_location(location.strip().title()))
+        result = q.enqueue(jilebi, str(resp))
+        print(result)
         return str(resp)
 
 if __name__ == "__main__":
