@@ -4,6 +4,7 @@ from get_weather import get_weather_by_location
 
 app = Flask(__name__)
 
+import os
 import redis
 r = redis.from_url(os.environ.get("REDIS_URL"))
 print('redis url', r)
