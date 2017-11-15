@@ -5,11 +5,11 @@ from get_weather import get_weather_by_location
 app = Flask(__name__)
 
 
-from rq import Queue
-from worker import conn
+# from rq import Queue
+# from worker import conn
 
-q = Queue(connection=conn)
-from utils import insert_into_redis
+# q = Queue(connection=conn)
+# from utils import insert_into_redis
 
 @app.route('/')
 def home_page():
@@ -24,7 +24,6 @@ def sms_reply():
         resp = MessagingResponse()
         details, weather_information = get_weather_by_location(location.strip().title())
         resp.message(weather_information)
-        q.enqueue(insert_into_redis, conn, details)
         return str(resp)
 
 if __name__ == "__main__":
