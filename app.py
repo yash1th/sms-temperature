@@ -20,19 +20,10 @@ def sms_reply():
     if request.method == 'GET':
         return 'You reached the sms page'
     else:
-        # location = request.form.get('Body')
-        # resp = MessagingResponse()
-        # details, weather_information = get_weather_by_location(location.strip().title())
-        # resp.message(weather_information)
-        # return str(resp)
-        #location = request.get_json(silent=True)
-        #location = request.get_data() #working
-        import json
-        location = json.dumps(json.loads(request.data())
-        print(location)
+        location = request.form.get('Body')
         resp = MessagingResponse()
-        # details, weather_information = get_weather_by_location(location.strip().title())
-        resp.message('Hello world')
+        details, weather_information = get_weather_by_location(location.strip().title())
+        resp.message(weather_information)
         return str(resp)
 
 if __name__ == "__main__":
