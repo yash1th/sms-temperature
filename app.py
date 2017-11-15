@@ -27,7 +27,8 @@ def sms_reply():
         # return str(resp)
         #location = request.get_json(silent=True)
         #location = request.get_data() #working
-        location = request.get_json(force=True) 
+        import json
+        location = json.dumps(json.loads(request.data())
         print('hallelujah')
         print(location)
         resp = MessagingResponse()
