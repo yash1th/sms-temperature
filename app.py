@@ -29,7 +29,6 @@ def sms_reply():
         #location = request.get_data() #working
         import json
         location = json.dumps(json.loads(request.data())
-        print('hallelujah')
         print(location)
         resp = MessagingResponse()
         # details, weather_information = get_weather_by_location(location.strip().title())
