@@ -20,8 +20,7 @@ def sms_reply():
     if request.method == 'GET':
         return 'You reached the sms page'
     else:
-        location = request.form.to_dict()
-        print(location)
+        data = request.form.get('Body')
         resp = MessagingResponse()
         details, weather_information = get_weather_by_location(location.strip().title())
         resp.message(weather_information)
